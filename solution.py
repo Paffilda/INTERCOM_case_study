@@ -33,7 +33,7 @@ def read_file(filepath):
                         rownum=rowidx + 1))
 
                 # check if primary key user_id is not null, otherwise raise error
-                if json_row["user_id"] == None:
+                if json_row["user_id"] is None:
                     raise Exception("user_id is missing on line number {rownum}".format(
                         rownum=rowidx+1))
 
@@ -49,10 +49,10 @@ def read_file(filepath):
 
                 list_of_jsons.append(json_row)
 
-
             except json.decoder.JSONDecodeError:
                 print("JSON not valid on line number {rownum}".format(
                     rownum=rowidx+1))
+
     return list_of_jsons
 
 
@@ -63,6 +63,7 @@ def earth_radius_lat(lat):
     """
     numerator = ((equatorial_radius ** 2 * math.cos(lat)) ** 2)
     denominator = ((equatorial_radius * math.cos(lat)) ** 2 + (polar_radius * math.sin(lat)) ** 2)
+
     return math.sqrt(numerator/denominator)
 
 
@@ -80,6 +81,7 @@ def distance(lat, lon, lat_center=lat_office, lon_center=lon_office):
     lon_center_rad = lon_center/radian_degree_const
     x = math.sin(lat_rad) * math.sin(lat_center_rad)
     y = math.cos(lat_rad) * math.cos(lat_center_rad) * math.cos(lon_center_rad-lon_rad)
+
     return earth_radius_lat(lat_center)*math.acos(x+y)
 
 
@@ -104,4 +106,3 @@ with open(outfile_path, 'a') as outfile:
     for item in outdata_sorted:
         json.dump(item, outfile)
         outfile.write('\n')
-
