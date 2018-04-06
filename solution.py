@@ -92,7 +92,6 @@ for d in indata:
     lon = float(d["longitude"])
     lat = float(d["latitude"])
     if distance(lat, lon) <= max_distance_km:
-
         outdata.append(d)
 
 outdata_sorted = sorted(outdata, key=lambda i: int(i["user_id"]))
