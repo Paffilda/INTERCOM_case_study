@@ -2,8 +2,8 @@ import json
 import math
 
 # variables
-file_path = r'D:\Dokumenty\$Plocha\fronkova.pavlina\Plocha\customer.txt'
-outfile_path = r'D:\Dokumenty\$Plocha\fronkova.pavlina\Plocha\customers_outfile.txt'
+file_path = 'customers.txt'
+outfile_path = 'customers_outfile.txt'
 max_distance_km = 100
 lat_office = 53.339428
 lon_office = -6.257664
