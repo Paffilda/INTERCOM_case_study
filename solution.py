@@ -101,7 +101,6 @@ open(outfile_path, 'w').close()
 
 # write data to outfile
 with open(outfile_path, 'a') as outfile:
-    outfile.truncate()
     for item in outdata_sorted:
         json.dump(item, outfile)
         outfile.write('\n')
